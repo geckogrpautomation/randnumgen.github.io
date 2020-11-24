@@ -16,3 +16,7 @@ Technologies Used: HTML5, CSS, Javascript.
 Browser compatibilty: Chrome, Firefox, Safari, IE 9+
 
 Links: 
+
+Raw HTML  -      https://github.com/geckogrpautomation/randnumgen.github.io
+
+Published Site - https://geckogrpautomation.github.io/randnumgen.github.io/
