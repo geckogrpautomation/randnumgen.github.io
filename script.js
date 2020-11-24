@@ -28,7 +28,7 @@ function generateRandomnPassword() {
       var numericOK = confirm("Do you want to use numeric");
       var specialCharsOK = confirm("Do you want to use special chars");
       
-      // declare blank strings for user char set and the apssword output
+      // Declare blank strings for user char set and the apssword output
       var charset = "";
       var generatedOutput= "";
 
@@ -53,12 +53,12 @@ function generateRandomnPassword() {
         console.log(charset);
       }       
       
-      //build paaswork from charset at the required length.
+      //Build password from charset at the required length.
       for ( var i = 0; i < desiredPasswordLength; i++ ) {
         generatedOutput+=charset.charAt(Math.floor(Math.random() *
         charset.length));   
       }
-      // return the password to HTML view.
+      // Return the password to HTML view.
       return generatedOutput;
 
       // If password does not meet required length alert the user and dont do the above calculations.
