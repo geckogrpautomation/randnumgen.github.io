@@ -58,7 +58,8 @@ function generateRandomnPassword() {
         generatedOutput+=charset.charAt(Math.floor(Math.random() *
         charset.length));   
       }
-      // Return the password to HTML view.
+      
+      // Return the password to initGenPassword().
       return generatedOutput;
 
       // If password does not meet required length alert the user and dont do the above calculations.
