@@ -74,6 +74,8 @@ var numInputOK= false;
 var specialInputOK = false;
 var passlengthOK = false;
 
+
+
 //Change user string inputs to integers
 var lCaseNumInt = parseInt(lCaseNum.value);
 var uCaseNumInt = parseInt(uCaseNum.value);
@@ -115,7 +117,7 @@ if (lCaseInputOK ===  true && uCaseInputOK === true && numInputOK === true && sp
   
 //Add to find total password length
   if (lCaseCheckBox.checked === true){
-    tempCalc = lCaseNumInt + tempCalc;
+    tempCalc = lCaseNumInt;
   }
 
   if (uCaseCheckBox.checked === true){
@@ -134,33 +136,49 @@ if (lCaseInputOK ===  true && uCaseInputOK === true && numInputOK === true && sp
   passLength = tempCalc;
  
   if (passLength >= 8 && passLength <= 128){   
-    
-                        
+                           
                                 
     // Declare blank strings for user char set and the apssword output
       var generatedOutput= "";
+      var lCasePass = "";
+      var uCasePass = "";
+      var numPass = "";
+      var specialPass = "";
               
       //Concatenate allowable characters based upon user feedback from confirmation input
-      if (lCaseCheckBox.checked === true){
-        var lCasePass = buildPass(lCaseNumInt , "abcdefghijklmnopqrstuvwxyz");                  
+      if (lCaseCheckBox.checked === true && lCaseNumInt > 0){
+        lCasePass = buildPass(lCaseNumInt , "abcdefghijklmnopqrstuvwxyz");   
+        console.log("lower case char count "  + lCaseNumInt  )  
+        console.log("lower password "  + lCasePass);             
       }
 
-      if (uCaseCheckBox.checked === true){
-        var uCasePass = buildPass(uCaseNumInt, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");       
+      if (uCaseCheckBox.checked === true && uCaseNumInt > 0  ){
+        uCasePass = buildPass(uCaseNumInt, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");   
+        console.log("upper case char count "  +  uCaseNumInt  )  
+        console.log("upper password "  + uCasePass);    
       }
 
-      if (numCheckBox.checked === true){
-        var numPass = buildPass(numInt, "0123456789"); 
+      if (numCheckBox.checked === true && numInt > 0){
+        numPass = buildPass(numInt, "0123456789"); 
+        console.log("numerical case char count "  +  numInt  ) 
+        console.log("numerical password "  +  numPass); 
       }
 
-      if (specialCheckBox.checked === true){
-        var specialPass = buildPass(specialInt, " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"); 
+      if (specialCheckBox.checked === true && specialInt > 0){
+        specialPass = buildPass(specialInt, " !#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+        console.log("special : CB " + specialCheckBox.checked + "  " +  specialInt  ) 
+        console.log("special password "  + specialPass);  
       }       
+      
+      
+      unscrmblOutput = "";
+      generatedOutput = "";
       
       //Concatenate built string for password for unscrambled output tag
       unscrmblOutput =  lCasePass + uCasePass  + numPass + specialPass;
 
       //Scramble password
+
       generatedOutput = shuffle(unscrmblOutput);
 
       // Return the password to initGenPassword().
@@ -168,7 +186,6 @@ if (lCaseInputOK ===  true && uCaseInputOK === true && numInputOK === true && sp
 
       
     } else {
-
         alert("Check correct boxes are checked, values are not zero and password length is between 8 and 128 characters");
       } 
   }  
